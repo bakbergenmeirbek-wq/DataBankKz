@@ -97,7 +97,7 @@
         );
         out.innerHTML = `<div class="card"><p>${text.replace(/\n/g, '</p><p>')}</p></div>`;
       } catch (err) {
-        out.innerHTML = `<p style="color:var(--danger)">${err.message}. <button class="btn btn-outline" onclick="window['Data.kz'].showApiKeyModal()">API кілтін енгізу</button></p>`;
+        out.innerHTML = `<p style="color:var(--danger)">${err.message}. API кілтін main.js файлына енгізіңіз.</p>`;
       }
       btn.disabled = false;
     });
