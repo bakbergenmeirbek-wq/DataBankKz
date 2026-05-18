@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Аналитика — Data.kz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Аналитика</h1>
+      <p>Интерактивті деректер, диаграммалар және кету коэффициенті калькуляторы</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container fade-in">
+      <h2 class="section-title">Динамикалық деректер кестесі</h2>
+      <div class="table-controls">
+        <div class="table-filter-row">
+          <select id="filter-bank" aria-label="Банк бойынша сүзгі">
+            <option value="">Барлық банктер</option>
+            <option value="Kaspi.kz">Kaspi.kz</option>
+            <option value="Halyk Bank">Halyk Bank</option>
+            <option value="Freedom Bank">Freedom Bank</option>
+            <option value="ForteBank">ForteBank</option>
+          </select>
+          <select id="filter-year" aria-label="Жыл бойынша сүзгі">
+            <option value="">Барлық жылдар</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+            <option value="2025">2025</option>
+            <option value="2026">2026</option>
+          </select>
+          <input type="search" id="table-search" placeholder="Банк немесе жыл бойынша іздеу..." aria-label="Іздеу">
+          <button type="button" class="btn btn-outline" id="filter-reset">Сүзгілерді тазалау</button>
+        </div>
+        <div class="filter-badges" id="filter-badges"></div>
+      </div>
+      <div class="data-table-wrap">
+        <table class="data-table">
+          <thead id="data-thead"></thead>
+          <tbody id="data-tbody"></tbody>
+        </table>
+      </div>
+      <div class="pagination">
+        <button class="btn btn-outline" id="page-prev" type="button">← Алдыңғы</button>
+        <span id="page-info">1 / 1 бет</span>
+        <button class="btn btn-outline" id="page-next" type="button">Келесі →</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--bg-secondary);">
+    <div class="container fade-in">
+      <h2 class="section-title">Интерактивті диаграммалар</h2>
+      <div class="charts-grid">
+        <div class="card chart-card">
+          <div class="chart-wrap"><canvas id="chart-churn"></canvas></div>
+        </div>
+        <div class="card chart-card">
+          <div class="chart-wrap"><canvas id="chart-users"></canvas></div>
+        </div>
+        <div class="card chart-card">
+          <div class="chart-wrap"><canvas id="chart-share"></canvas></div>
+        </div>
+        <div class="card chart-card">
+          <div class="chart-wrap"><canvas id="chart-retention"></canvas></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="calculator">
+    <div class="container fade-in">
+      <h2 class="section-title">Кету коэффициенті калькуляторы</h2>
+      <p class="section-subtitle">Клиент кетуін өз деректеріңізбен есептеңіз</p>
+      <form id="churn-calc-form" class="calculator-form card">
+        <div class="form-group">
+          <label for="calc-start">Кезең басындағы клиенттер</label>
+          <input type="number" id="calc-start" min="1" required placeholder="Мысалы: 10000">
+        </div>
+        <div class="form-group">
+          <label for="calc-end">Кезең соңындағы клиенттер</label>
+          <input type="number" id="calc-end" min="0" required placeholder="Мысалы: 9500">
+        </div>
+        <div class="form-group">
+          <label for="calc-period">Кезең</label>
+          <select id="calc-period">
+            <option value="month">Айлық</option>
+            <option value="quarter">Тоқсандық</option>
+            <option value="year">Жылдық</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Есептеу</button>
+      </form>
+      <div id="calc-result" class="calc-result" role="status"></div>
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--bg-secondary);">
+    <div class="container fade-in">
+      <h2 class="section-title">Негізгі тұжырымдар</h2>
+      <div class="insights-grid">
+        <div class="card insight-card" id="kaspi">
+          <div class="icon">📊</div>
+          <h3>Kaspi — ең төмен кету</h3>
+          <p>Kaspi-дің суперқолданба экожүйесі ең төменгі кетуді қамтамасыз етеді (~4,2%).</p>
+        </div>
+        <div class="card insight-card" id="halyk">
+          <div class="icon">🏦</div>
+          <h3>Halyk гибрид моделі</h3>
+          <p>Halyk Bank-тың филиалдар желісі + цифрлық гибриді үлкен базасына қарамастан кетуді азайтады.</p>
+        </div>
+        <div class="card insight-card" id="freedom">
+          <div class="icon">📈</div>
+          <h3>Freedom жылдам өсу</h3>
+          <p>Freedom Bank ең жылдам өсуде, бірақ кету деңгейі ең жоғары — бұл жылдам өсудегі сынаушылардың типтік жағдайы.</p>
+        </div>
+        <div class="card insight-card" id="forte">
+          <div class="icon">⭐</div>
+          <h3>ForteBank CEI</h3>
+          <p>ForteBank-тың CEI тұрақтылығы (1,74, нарық ортасы 2,02) кетудің төмендеуімен байланысты.</p>
+        </div>
+        <div class="card insight-card">
+          <div class="icon">🌐</div>
+          <h3>Нарық орташа көрсеткіші</h3>
+          <p>Қазақстанның цифрлық банктік нарығының орташа кету деңгейі 6–8%, бұл аймақтық дамушы нарықтардың орташасынан төмен.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/analytics.js"></script>
+</body>
+</html>

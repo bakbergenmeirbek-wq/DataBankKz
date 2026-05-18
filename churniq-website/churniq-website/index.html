@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data.kz — Басты бет | Қазақстандық Банктердегі Клиент Кетуін Талдау</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="hero-mesh"></div>
+      <canvas id="particles-canvas"></canvas>
+      <div class="pulse-rings">
+        <div class="pulse-ring"></div>
+        <div class="pulse-ring"></div>
+        <div class="pulse-ring"></div>
+      </div>
+    </div>
+    <div class="hero-content">
+      <h1>Клиенттерді ұстап қалу көрсеткіштерін талдау</h1>
+      <p class="lead">Kaspi.kz, Halyk Bank, Freedom Bank және ForteBank бойынша AI негізіндегі клиентті ұстап қалу талдауы</p>
+      <div class="hero-buttons">
+        <a href="analytics.html" class="btn btn-primary">Аналитиканы көру</a>
+        <a href="ai-tools.html" class="btn btn-outline">AI Агентімен танысу</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title fade-in">Негізгі Статистика</h2>
+      <p class="section-subtitle fade-in">Қазақстанның жетекші банктерінің клиент базасы мен нарық позициясы</p>
+      <div class="stats-row">
+        <div class="card stat-card fade-in">
+          <div class="stat-value" data-counter data-target="13.5" data-suffix=" млн+" data-decimals="1">0</div>
+          <div class="stat-label">Kaspi.kz — белсенді пайдаланушы (2024)</div>
+        </div>
+        <div class="card stat-card fade-in">
+          <div class="stat-value" data-counter data-target="11.5" data-suffix=" млн+" data-decimals="1">0</div>
+          <div class="stat-label">Halyk Bank — белсенді бөлшек клиент (2025)</div>
+        </div>
+        <div class="card stat-card fade-in">
+          <div class="stat-value" data-counter data-target="3" data-suffix=" млн+" data-decimals="0">0</div>
+          <div class="stat-label">Freedom Bank — клиент (2024)</div>
+        </div>
+        <div class="card stat-card fade-in">
+          <div class="stat-value">ТОП-5</div>
+          <div class="stat-label">ForteBank — активтер бойынша Қазақстандағы ТОП-5 банк</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--bg-secondary);">
+    <div class="container">
+      <h2 class="section-title fade-in">Банктерді Салыстыру</h2>
+      <p class="section-subtitle fade-in">Төрт жетекші банктің кету коэффициенті мен негізгі көрсеткіштері</p>
+      <div class="bank-grid">
+        <article class="card bank-card fade-in" id="kaspi">
+          <img src="kaspi.png" alt="Kaspi.kz" class="bank-icon">
+          <h3>Kaspi.kz</h3>
+          <ul class="metrics">
+            <li><strong>13,5 млн</strong> белсенді пайдаланушы (2024)</li>
+            <li>Табыс Q2 2024: <strong>~600 млрд ₸</strong> (+36% жылдық)</li>
+            <li>Лояльдылық: <strong>78</strong> | Нарық үлесі: <strong>~60%</strong></li>
+            <li>Кету коэффициенті: <strong>~4,2%</strong></li>
+          </ul>
+          <a href="analytics.html#kaspi" class="btn btn-outline">Талдауды оқу</a>
+        </article>
+        <article class="card bank-card fade-in" id="halyk">
+          <img src="halyk.jpg" alt="Halyk Bank" class="bank-icon">
+          <h3>Halyk Bank</h3>
+          <ul class="metrics">
+            <li><strong>11,5 млн</strong> белсенді бөлшек клиент (2025)</li>
+            <li>Жалпы активтер: <strong>15 494,4 млрд ₸</strong> (2023)</li>
+            <li><strong>570</strong> филиал | Суперқолданба енуі: <strong>68%</strong></li>
+            <li>Кету коэффициенті: <strong>~6,8%</strong></li>
+          </ul>
+          <a href="analytics.html#halyk" class="btn btn-outline">Талдауды оқу</a>
+        </article>
+        <article class="card bank-card fade-in" id="freedom">
+          <img src="freedom.png" alt="Freedom Bank" class="bank-icon">
+          <h3>Freedom Bank</h3>
+          <ul class="metrics">
+            <li>Депозиттер <strong>+472%</strong> өсті (2021→2022)</li>
+            <li>103,6 млрд-тан <strong>593,4 млрд ₸</strong>-ге дейін</li>
+            <li>Кету коэффициенті: <strong>~9,1%</strong></li>
+          </ul>
+          <a href="analytics.html#freedom" class="btn btn-outline">Талдауды оқу</a>
+        </article>
+        <article class="card bank-card fade-in" id="forte">
+          <img src="forte.svg" alt="ForteBank" class="bank-icon">
+          <h3>ForteBank</h3>
+          <ul class="metrics">
+            <li>ТОП-5 — активтер мен капитал бойынша</li>
+            <li>Бизнес несие портфелі: <strong>866 млрд ₸</strong> (+18,1%)</li>
+            <li>Бірінші деңгей капитал: <strong>18,7%</strong></li>
+            <li>Кету коэффициенті: <strong>~7,3%</strong></li>
+          </ul>
+          <a href="analytics.html#forte" class="btn btn-outline">Талдауды оқу</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title fade-in">Кету Коэффициентін Есептеу</h2>
+      <p class="section-subtitle fade-in">Клиент кетуін өлшеудің үш қадамды әдісі</p>
+      <div class="steps-grid fade-in">
+        <div class="card step-card">
+          <div class="step-num">1</div>
+          <h3>Кезең басындағы клиенттер санын анықтау</h3>
+          <p style="color:var(--text-secondary);font-size:0.9rem;">Айлық, тоқсандық немесе жылдық кезеңнің басына белсенді клиенттерді санау.</p>
+        </div>
+        <div class="card step-card">
+          <div class="step-num">2</div>
+          <h3>Кезең соңындағы клиенттер санын алу</h3>
+          <p style="color:var(--text-secondary);font-size:0.9rem;">Сол кезеңнің соңында қалған адал клиенттерді анықтау.</p>
+        </div>
+        <div class="card step-card">
+          <div class="step-num">3</div>
+          <h3>Айырмашылықты бастапқы санға бөліп, 100-ге көбейту</h3>
+          <p style="color:var(--text-secondary);font-size:0.9rem;">Жоғалған клиенттердің пайызын есептеу.</p>
+        </div>
+      </div>
+      <div class="formula-block fade-in">
+        Кету коэффициенті = ((Кб − Кс) / Кб) × 100%
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--bg-secondary);">
+    <div class="container">
+      <h2 class="section-title fade-in">AI Көмегімен Жасалған Визуалды Дизайн</h2>
+      <p class="section-subtitle fade-in">Банктік талдау концепцияларын бейнелеуші SVG иллюстрациялар</p>
+      <div class="illustration-grid">
+        <div class="illustration-item fade-in">
+          <svg viewBox="0 0 240 180" xmlns="http://www.w3.org/2000/svg">
+            <rect width="240" height="180" fill="#1A1A1A" rx="12"/>
+            <rect x="80" y="60" width="80" height="90" fill="#D97706" opacity="0.3" rx="4"/>
+            <polygon points="120,30 160,60 80,60" fill="#F59E0B" opacity="0.5"/>
+            <line x1="40" y1="100" x2="200" y2="80" stroke="#D97706" stroke-width="2" stroke-dasharray="4"/>
+            <circle cx="60" cy="95" r="4" fill="#F59E0B"/><circle cx="120" cy="85" r="4" fill="#F59E0B"/><circle cx="180" cy="75" r="4" fill="#F59E0B"/>
+          </svg>
+          <p>Деректер ағындары бар банк ғимараты — қаржылық ақпараттың үздіксіз ағымы</p>
+        </div>
+        <div class="illustration-item fade-in">
+          <svg viewBox="0 0 240 180" xmlns="http://www.w3.org/2000/svg">
+            <rect width="240" height="180" fill="#1A1A1A" rx="12"/>
+            <polyline points="30,140 70,100 110,120 150,60 190,80 210,40" fill="none" stroke="#D97706" stroke-width="3"/>
+            <polyline points="30,140 70,110 110,130 150,90 190,100 210,70" fill="none" stroke="#F59E0B" stroke-width="2" opacity="0.6"/>
+          </svg>
+          <p>Ұстап қалу метафорасы — клиент адалдығының динамикалық өсуі</p>
+        </div>
+        <div class="illustration-item fade-in">
+          <svg viewBox="0 0 240 180" xmlns="http://www.w3.org/2000/svg">
+            <rect width="240" height="180" fill="#1A1A1A" rx="12"/>
+            <rect x="85" y="40" width="70" height="120" rx="12" fill="#2B2B2B" stroke="#D97706"/>
+            <rect x="95" y="55" width="50" height="70" rx="6" fill="#D97706" opacity="0.4"/>
+            <circle cx="120" cy="140" r="6" fill="#F59E0B"/>
+          </svg>
+          <p>Суперқолданба концепциясы — мобильді қолданба арқылы банктік қызметтер</p>
+        </div>
+        <div class="illustration-item fade-in">
+          <svg viewBox="0 0 240 180" xmlns="http://www.w3.org/2000/svg">
+            <rect width="240" height="180" fill="#1A1A1A" rx="12"/>
+            <circle cx="120" cy="90" r="8" fill="#F59E0B"/>
+            <circle cx="60" cy="60" r="6" fill="#D97706"/><circle cx="180" cy="60" r="6" fill="#D97706"/>
+            <circle cx="60" cy="120" r="6" fill="#D97706"/><circle cx="180" cy="120" r="6" fill="#D97706"/>
+            <line x1="120" y1="90" x2="60" y2="60" stroke="#D97706" opacity="0.4"/>
+            <line x1="120" y1="90" x2="180" y2="60" stroke="#D97706" opacity="0.4"/>
+            <line x1="120" y1="90" x2="60" y2="120" stroke="#D97706" opacity="0.4"/>
+            <line x1="120" y1="90" x2="180" y2="120" stroke="#D97706" opacity="0.4"/>
+          </svg>
+          <p>Нейрондық желі — AI негізіндегі кету болжамдау моделі</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+</html>

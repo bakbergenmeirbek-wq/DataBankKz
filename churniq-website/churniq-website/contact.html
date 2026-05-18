@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Байланыс — Data.kz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Байланыс</h1>
+      <p>Data.kz жобасы бойынша сұрақтар мен ынтымақтастық</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container contact-grid fade-in">
+      <div>
+        <h2 class="section-title">Хабарлама жіберу</h2>
+        <form id="contact-form" class="contact-form card" novalidate>
+          <div class="form-group">
+            <label for="contact-name">Аты-жөні</label>
+            <input type="text" id="contact-name" placeholder="Сіздің атыңыз" required>
+            <span class="form-error" id="err-name">Атыңызды енгізіңіз</span>
+          </div>
+          <div class="form-group">
+            <label for="contact-email">Электрондық пошта</label>
+            <input type="email" id="contact-email" placeholder="email@example.com" required>
+            <span class="form-error" id="err-email">Дұрыс электрондық поштаны енгізіңіз</span>
+          </div>
+          <div class="form-group">
+            <label for="contact-bank">Қызығушылық банкі</label>
+            <select id="contact-bank" required>
+              <option value="">Таңдаңыз...</option>
+              <option value="kaspi">Kaspi.kz</option>
+              <option value="halyk">Halyk Bank</option>
+              <option value="freedom">Freedom Bank</option>
+              <option value="forte">ForteBank</option>
+              <option value="other">Басқа</option>
+            </select>
+            <span class="form-error" id="err-bank">Банкті таңдаңыз</span>
+          </div>
+          <div class="form-group">
+            <label for="contact-message">Хабарлама</label>
+            <textarea id="contact-message" rows="5" placeholder="Сіздің хабарламаңыз..." required></textarea>
+            <span class="form-error" id="err-message">Хабарламаны жазыңыз</span>
+          </div>
+          <button type="submit" class="btn btn-primary">Жіберу</button>
+        </form>
+      </div>
+      <div>
+        <div class="card" style="margin-bottom:1.5rem">
+          <h3 style="margin-bottom:1rem;font-family:var(--font-display)">Жоба ақпараты</h3>
+          <p><strong>Университет:</strong> Нархоз Университеті</p>
+          <p><strong>Факультет:</strong> ЦТМ (Цифрлық технологиялар мектебі)</p>
+          <p><strong>Бағдарлама:</strong> Ақпараттық-коммуникациялық технологиялар (АКТ)</p>
+          <p><strong>Авторлар:</strong> Еслямова Айдана, Мейрбек Бақберген</p>
+          <p><strong>Жыл:</strong> 2026</p>
+          <p><strong>Пән:</strong> АКТ</p>
+        </div>
+        <h3 class="section-title" style="font-size:1.25rem">Қазақстан картасы</h3>
+        <div class="map-frame card">
+          <img src="narxoz.png" alt="Нархоз Университеті — Алматы" class="map-image">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--bg-secondary);">
+    <div class="container fade-in">
+      <h2 class="section-title">Жиі қойылатын сұрақтар</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button type="button" class="faq-question">Банк үшін қанша кету коэффициенті жақсы саналады? <span class="faq-icon">▼</span></button>
+          <div class="faq-answer"><p>Жалпы алғанда 5%-дан төмен кету коэффициенті жақсы деп есептеледі. Kaspi.kz ~4,2% деңгейінде, ал 10%-дан жоғары көрсеткіш шұғыл клиенттік саясатты қай қарауды қажет етеді.</p></div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-question">Деректер қалай жиналды? <span class="faq-icon">▼</span></button>
+          <div class="faq-answer"><p>Банктердің жылдық есептері, Senteo CEI зерттеуі, Baker Tilly Қазақстан рейтингтері және ашық қаржылық есептер пайдаланылды. Кейбір көрсеткіштер зерттеу мақсатында модельденген болуы мүмкін.</p></div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-question">Бұл деректерді зерттеу үшін пайдалана аламын ба? <span class="faq-icon">▼</span></button>
+          <div class="faq-answer"><p>Иә, білім беру мақсатында пайдалануға болады. Дереккөз ретінде Data.kz жобасын және авторларды көрсетуді сұраймыз.</p></div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-question">Сайтты жасау үшін қандай құралдар қолданылды? <span class="faq-icon">▼</span></button>
+          <div class="faq-answer"><p>Сайт таза веб технологияларында жасалған: HTML, CSS, JavaScript, диаграммалар кітапханасы, Web Audio API және Anthropic API (AI чатбот пен инсайт генераторы).</p></div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-question">Kaspi неліктен ең төменгі кету деңгейін сақтайды? <span class="faq-icon">▼</span></button>
+          <div class="faq-answer"><p>Суперқолданба экожүйесі, жоғары лояльдылық көрсеткіші (78), маркетплейс интеграциясы және деректерге негізделген жекелендіру клиенттерді платформада ұстап тұрады.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+  <div class="toast" id="toast">Хабарлама жіберілді! Біз 24 сағат ішінде жауап береміз.</div>
+
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      let valid = true;
+      const name = document.getElementById('contact-name');
+      const email = document.getElementById('contact-email');
+      const bank = document.getElementById('contact-bank');
+      const msg = document.getElementById('contact-message');
+      [['err-name', name.value.trim()], ['err-email', /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)], ['err-bank', bank.value], ['err-message', msg.value.trim()]].forEach(([id, ok]) => {
+        const el = document.getElementById(id);
+        if (!ok) { el.classList.add('visible'); valid = false; } else el.classList.remove('visible');
+      });
+      if (!valid) return;
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 4000);
+      this.reset();
+    });
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => btn.closest('.faq-item').classList.toggle('open'));
+    });
+  </script>
+</body>
+</html>

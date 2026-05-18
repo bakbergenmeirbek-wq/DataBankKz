@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Құралдары — Data.kz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>AI Құралдары</h1>
+      <p>Жасанды интеллект көмегімен кету талдауы, чатбот және деректер визуализациясы</p>
+    </div>
+  </section>
+
+  <section class="section" style="background: var(--bg-secondary);">
+    <div class="container fade-in">
+      <h2 class="section-title">AI Инсайт Генераторы</h2>
+      <p class="section-subtitle">2024–2025 жылдарға арналған деректерге негізделген аналитикалық инсайт</p>
+      <button type="button" class="btn btn-primary" id="insight-generate">Инсайт жасату</button>
+      <div id="insight-output" class="insight-output"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container fade-in">
+      <h2 class="section-title">AI-Жасалған Ambient Музыка</h2>
+      <div class="card audio-player">
+        <p style="margin-bottom:1rem;color:var(--text-secondary);">AI-Жасалған Ambient Музыка — Фондық Режим</p>
+        <div class="audio-controls">
+          <button type="button" class="btn btn-primary" id="audio-play">Ойнату</button>
+          <button type="button" class="btn btn-outline" id="audio-stop">Тоқтату</button>
+          <label>
+            Дыбыс деңгейі
+            <input type="range" id="audio-volume" class="volume-slider" min="0" max="1" step="0.01" value="0.3">
+          </label>
+        </div>
+        <canvas id="audio-viz" class="audio-viz" height="120"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <section class="section data-panel" id="data-panel" style="background: var(--bg-secondary);">
+    <div class="container fade-in">
+      <h2 class="section-title">Тікелей Деректер Визуализациясы — AI Көмегімен</h2>
+      <div class="animated-bars" id="animated-bars">
+        <div class="bar" style="height:120px" data-h="120"></div>
+        <div class="bar" style="height:80px" data-h="80"></div>
+        <div class="bar" style="height:160px" data-h="160"></div>
+        <div class="bar" style="height:100px" data-h="100"></div>
+        <div class="bar" style="height:140px" data-h="140"></div>
+        <div class="bar" style="height:90px" data-h="90"></div>
+        <div class="bar" style="height:170px" data-h="170"></div>
+        <div class="bar" style="height:110px" data-h="110"></div>
+      </div>
+      <div class="data-flow-line"></div>
+      <div class="floating-labels">
+        <span class="floating-label" style="left:10%;animation-delay:0s">Kaspi 4,2%</span>
+        <span class="floating-label" style="left:35%;animation-delay:0.5s">Halyk 6,8%</span>
+        <span class="floating-label" style="left:55%;animation-delay:1s">Freedom 9,1%</span>
+        <span class="floating-label" style="left:80%;animation-delay:1.5s">Forte 7,3%</span>
+      </div>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+
+  <!-- Chatbot -->
+  <button type="button" class="chat-fab" id="chat-fab" aria-label="Чатты ашу">💬</button>
+  <div class="chat-panel" id="chat-panel">
+    <div class="chat-header">
+      <h3>Data.kz AI Көмекшісі</h3>
+      <button type="button" class="chat-close" id="chat-close" aria-label="Жабу">×</button>
+    </div>
+    <div class="api-key-banner" id="api-key-banner" style="display:none">
+      API кілті қажет. <button type="button">Кілтті енгізу</button>
+    </div>
+    <div class="chat-suggestions" id="chat-suggestions"></div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="chat-msg bot">Сәлеметсіз бе! Мен Data.kz AI көмекшісімін. Қазақстан банктеріндегі клиент кетуі туралы сұрақ қойыңыз.</div>
+    </div>
+    <div class="chat-input-row">
+      <input type="text" id="chat-input" placeholder="Хабарламаңызды жазыңыз..." autocomplete="off">
+      <button type="button" class="btn btn-primary" id="chat-send">Жіберу</button>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script src="js/audio.js"></script>
+</body>
+</html>
