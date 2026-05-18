@@ -100,78 +100,55 @@
     btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   }
 
-  /* API key modal for Anthropic */
+  /* ═══════════════════════════════════════════
+     Gemini API — кілтті осында қойыңыз
+  ═══════════════════════════════════════════ */
+  const GEMINI_API_KEY = 'AIzaSyCgB_7t1ai4PxTFgy_17bPsJJ3NEp5YUr0'; // ← осында кілтіңізді қойыңыз
+
   window['Data.kz'] = window['Data.kz'] || {};
 
   window['Data.kz'].getApiKey = function () {
-    return localStorage.getItem('churniq_anthropic_key') || '';
+    return GEMINI_API_KEY;
   };
 
-  window['Data.kz'].setApiKey = function (key) {
-    localStorage.setItem('churniq_anthropic_key', key);
-  };
-
-  window['Data.kz'].showApiKeyModal = function () {
-    let overlay = document.getElementById('api-key-modal');
-    if (!overlay) {
-      overlay = document.createElement('div');
-      overlay.id = 'api-key-modal';
-      overlay.className = 'modal-overlay';
-      overlay.innerHTML = `
-        <div class="modal">
-          <h3>API Кілтін енгізу</h3>
-          <p>AI чатбот пен инсайт генераторы жұмыс істеуі үшін Anthropic API кілтін енгізіңіз. Кілт тек браузеріңізде сақталады.</p>
-          <input type="password" id="api-key-input" placeholder="sk-ant-..." autocomplete="off">
-          <div class="modal-actions">
-            <button class="btn btn-outline" id="api-key-cancel">Болдырмау</button>
-            <button class="btn btn-primary" id="api-key-save">Сақтау</button>
-          </div>
-        </div>`;
-      document.body.appendChild(overlay);
-      overlay.querySelector('#api-key-save').addEventListener('click', () => {
-        const val = document.getElementById('api-key-input').value.trim();
-        if (val) {
-          window['Data.kz'].setApiKey(val);
-          overlay.classList.remove('open');
-        }
-      });
-      overlay.querySelector('#api-key-cancel').addEventListener('click', () => overlay.classList.remove('open'));
-      overlay.addEventListener('click', (e) => {
-        if (e.target === overlay) overlay.classList.remove('open');
-      });
-    }
-    const input = document.getElementById('api-key-input');
-    if (input) input.value = window['Data.kz'].getApiKey();
-    overlay.classList.add('open');
-  };
-
+  // Anthropic callAnthropic → Gemini callAnthropic (атын сақтадық, chatbot.js өзгертпейміз)
   window['Data.kz'].callAnthropic = async function (messages, systemPrompt) {
     const apiKey = window['Data.kz'].getApiKey();
-    if (!apiKey) {
-      window['Data.kz'].showApiKeyModal();
-      throw new Error('API кілті жоқ');
+    if (!apiKey || apiKey === 'YOUR_GEMINI_API_KEY_HERE') {
+      throw new Error('API кілтін main.js файлына енгізіңіз');
     }
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
+
+    const GEMINI_MODEL = 'gemini-2.0-flash';
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${apiKey}`;
+
+    // Anthropic messages форматын → Gemini форматына аударамыз
+    const geminiContents = messages.map((m) => ({
+      role: m.role === 'assistant' ? 'model' : 'user',
+      parts: [{ text: m.content }]
+    }));
+
+    const response = await fetch(url, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': apiKey,
-        'anthropic-version': '2023-06-01',
-        'anthropic-dangerous-direct-browser-access': 'true'
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
-        system: systemPrompt,
-        messages
+        system_instruction: {
+          parts: [{ text: systemPrompt }]
+        },
+        contents: geminiContents,
+        generationConfig: {
+          maxOutputTokens: 1000,
+          temperature: 0.7
+        }
       })
     });
+
     if (!response.ok) {
       const err = await response.json().catch(() => ({}));
       throw new Error(err.error?.message || 'API сұрауы сәтсіз аяқталды');
     }
+
     const data = await response.json();
-    return data.content?.[0]?.text || '';
+    return data.candidates?.[0]?.content?.parts?.[0]?.text || '';
   };
 
   if (document.readyState === 'loading') {
