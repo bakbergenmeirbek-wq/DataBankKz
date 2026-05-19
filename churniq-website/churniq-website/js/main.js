@@ -103,42 +103,31 @@
   /* ═══════════════════════════════════════════
      Gemini API — кілтті осында қойыңыз
   ═══════════════════════════════════════════ */
-  const GEMINI_API_KEY = 'AIzaSyC6wWhyRv7NSiinP_wveVQEtM3fb-uQ3Ro'; // ← осында кілтіңізді қойыңыз
+  const GEMINI_API_KEY = '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';
 
-  window['Data.kz'] = window['Data.kz'] || {};
+    window['Data.kz'] = window['Data.kz'] || {};
 
-  window['Data.kz'].getApiKey = function () {
+    window['Data.kz'].getApiKey = function () {
     return GEMINI_API_KEY;
-  };
+    };
 
-  // Anthropic callAnthropic → Gemini callAnthropic (атын сақтадық, chatbot.js өзгертпейміз)
-  window['Data.kz'].callAnthropic = async function (messages, systemPrompt) {
+    window['Data.kz'].callAnthropic = async function (messages, systemPrompt) {
     const apiKey = window['Data.kz'].getApiKey();
-    if (!apiKey || apiKey === 'YOUR_GEMINI_API_KEY_HERE') {
-      throw new Error('API кілтін main.js файлына енгізіңіз');
-    }
 
-    const GEMINI_MODEL = 'gemini-2.0-flash';
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${apiKey}`;
-
-    // Anthropic messages форматын → Gemini форматына аударамыз
-    const geminiContents = messages.map((m) => ({
-      role: m.role === 'assistant' ? 'model' : 'user',
-      parts: [{ text: m.content }]
-    }));
-
-    const response = await fetch(url, {
+    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${apiKey}`
+      },
       body: JSON.stringify({
-        system_instruction: {
-          parts: [{ text: systemPrompt }]
-        },
-        contents: geminiContents,
-        generationConfig: {
-          maxOutputTokens: 1000,
-          temperature: 0.7
-        }
+        model: 'llama-3.3-70b-versatile',
+        messages: [
+          { role: 'system', content: systemPrompt },
+          ...messages
+        ],
+        max_tokens: 1000,
+        temperature: 0.7
       })
     });
 
@@ -148,8 +137,9 @@
     }
 
     const data = await response.json();
-    return data.candidates?.[0]?.content?.parts?.[0]?.text || '';
+    return data.choices?.[0]?.message?.content || '';
   };
+
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', injectLayout);
