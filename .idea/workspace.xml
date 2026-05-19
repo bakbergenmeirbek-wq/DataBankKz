@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="715fcd52-6c79-41d0-a5d9-7271eb5feafa" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/churniq-website/churniq-website/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/churniq-website/churniq-website/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/churniq-website/churniq-website/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/churniq-website/churniq-website/contact.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
