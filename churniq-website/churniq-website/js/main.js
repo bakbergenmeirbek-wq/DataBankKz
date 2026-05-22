@@ -40,7 +40,7 @@
           <div class="footer-grid">
             <div>
               <h4>Data.kz</h4>
-              <p>Қазақстандық банктердегі клиент кетуін талдау жобасы</p>
+              <p>Қазақстандық банктердегі client кетуін талдау жобасы</p>
               <p>Авторлар: <strong>Еслямова Айдана, Мейрбек Бақберген</strong></p>
               <p>Пән: <strong>АКТ</strong></p>
             </div>
@@ -65,7 +65,7 @@
               </div>
             </div>
           </div>
-          <div class="footer-bottom">© 2026 Data.kz — Нархоз Университеті, ЦТМ, АКТ</div>
+          <div class="footer-bottom">©️ 2026 Data.kz — Нархоз Университеті, ЦТМ, АКТ</div>
         </div>
       </footer>
       <button class="back-to-top" id="back-to-top" aria-label="Жоғарыға оралу">↑</button>`;
@@ -101,18 +101,35 @@
   }
 
   /* ═══════════════════════════════════════════
-     Gemini API — кілтті осында қойыңыз
+     API кілтті .env файлынан автоматты оқу функциясы
   ═══════════════════════════════════════════ */
-  const GEMINI_API_KEY = "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";
+  window['Data.kz'] = window['Data.kz'] || {};
 
-    window['Data.kz'] = window['Data.kz'] || {};
+  window['Data.kz'].getApiKey = async function () {
+    try {
+      // .env файлын мәтін ретінде жүктеп аламыз
+      const response = await fetch('.env');
+      const text = await response.text();
 
-    window['Data.kz'].getApiKey = function () {
-    return GEMINI_API_KEY;
-    };
+      // Мәтін ішінен GROQ_API_KEY мәнін іздейміз
+      const match = text.match(/GROQ_API_KEY\s*=\s*([^\s]+)/);
+      if (match && match[1]) {
+        return match[1];
+      }
+      throw new Error('.env файлынан GROQ_API_KEY табылмады');
+    } catch (e) {
+      console.error("Кілтті оқу қатесі:", e);
+      return null;
+    }
+  };
 
-    window['Data.kz'].callAnthropic = async function (messages, systemPrompt) {
-    const apiKey = window['Data.kz'].getApiKey();
+  window['Data.kz'].callAnthropic = async function (messages, systemPrompt) {
+    // Кілттің келуін күтеміз (async/await)
+    const apiKey = await window['Data.kz'].getApiKey();
+
+    if (!apiKey) {
+      throw new Error('API кілт жүктелмеді. .env файлын тексеріңіз.');
+    }
 
     const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
