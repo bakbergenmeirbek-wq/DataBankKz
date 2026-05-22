@@ -103,7 +103,7 @@
   /* ═══════════════════════════════════════════
      Gemini API — кілтті осында қойыңыз
   ═══════════════════════════════════════════ */
-  const GEMINI_API_KEY = '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';
+  const GEMINI_API_KEY = "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";
 
     window['Data.kz'] = window['Data.kz'] || {};
 
