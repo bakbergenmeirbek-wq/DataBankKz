@@ -108,7 +108,7 @@
   window['Data.kz'].getApiKey = async function () {
     try {
       // .env файлын мәтін ретінде жүктеп аламыз
-      const response = await fetch('.env');
+      const response = await fetch('../.env');
       const text = await response.text();
 
       // Мәтін ішінен GROQ_API_KEY мәнін іздейміз
@@ -164,3 +164,4 @@
     injectLayout();
   }
 })();
+env
